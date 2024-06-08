@@ -97,6 +97,27 @@
               }
             ];
           };
+          kyanite = nixpkgs.lib.nixosSystem {
+            system = "x86_64-linux";
+            modules = [
+              ./hosts/kyanite
+              ./nixos
+              catppuccin.nixosModules.catppuccin
+              home-manager.nixosModules.home-manager
+              {
+                cyrstal-cavern.roles.desktop = true;
+                home-manager.users = {
+                  kyanite = {
+                    home.stateVersion = "23.11";
+                    imports = [
+                    catppuccin.homeManagerModules.catppuccin
+                      ./home
+                    ];
+                  };
+                };
+              }
+            ];
+          };
         };
       };
       perSystem =
