@@ -109,8 +109,16 @@
                 home-manager.users = {
                   kyanite = {
                     home.stateVersion = "23.11";
+                    crystal-cavern.gui = true;
                     imports = [
-                    catppuccin.homeManagerModules.catppuccin
+                      catppuccin.homeManagerModules.catppuccin
+                      ./home
+                    ];
+                  };
+                  root = {
+                    home.stateVersion = "23.11";
+                    imports = [
+                      catppuccin.homeManagerModules.catppuccin
                       ./home
                     ];
                   };

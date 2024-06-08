@@ -16,16 +16,18 @@
   boot.loader.efi.canTouchEfiVariables = true;
 
   networking.hostName = "kyanite"; # Define your hostname.
-  environment.systemPackages = with pkgs; [
-    musescore
-  ];
+  environment.systemPackages = with pkgs; [ musescore ];
 
   time.timeZone = "Europe/Berlin";
 
   i18n.defaultLocale = "de_DE.UTF-8";
 
   networking.hosts = {
-    "127.0.0.1" = ["intern" "extern" "localhost"];
+    "127.0.0.1" = [
+      "intern"
+      "extern"
+      "localhost"
+    ];
   };
 
   services.openssh = {
