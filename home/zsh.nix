@@ -104,6 +104,7 @@ in
             show_path = ''
               echo $PATH | tr ':' ' '
             '';
+            tree = "eza --tree";
           };
           envExtra = ''
             export PATH=$PATH:$HOME/.local/bin

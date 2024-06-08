@@ -1,9 +1,9 @@
 {
   inputs = {
     # Principle inputs (updated by `nix run .#update`)
-    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-24.05";
     home-manager = {
-      url = "github:nix-community/home-manager";
+      url = "github:nix-community/home-manager/release-24.05";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
@@ -39,6 +39,7 @@
             inputs.catppuccin.nixosModules.catppuccin
             self.nixosModules.home-manager
             {
+              crystal-cavern.roles.server = true;
               home-manager.users = {
                 azurite = {
                   home.stateVersion = "23.11";
@@ -65,15 +66,23 @@
           crystal-cavern.zsh.enable = true;
         };
       };
-      perSystem = _: {
-        treefmt = {
-          projectRootFile = "flake.nix";
-          programs = {
-            nixfmt-rfc-style.enable = true;
-            deadnix.enable = true;
-            statix.enable = true;
+      perSystem =
+        { pkgs, ... }:
+        {
+          devShells.default = pkgs.mkShell {
+            nativeBuildInputs = with pkgs; [
+              nixfmt-rfc-style
+              nil
+            ];
+          };
+          treefmt = {
+            projectRootFile = "flake.nix";
+            programs = {
+              nixfmt-rfc-style.enable = true;
+              deadnix.enable = true;
+              statix.enable = true;
+            };
           };
         };
-      };
     };
 }
