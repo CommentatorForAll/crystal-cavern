@@ -8,62 +8,93 @@
     };
 
     flake-parts.url = "github:hercules-ci/flake-parts";
-    nixos-flake.url = "github:srid/nixos-flake";
     treefmt-nix = {
       url = "github:numtide/treefmt-nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     catppuccin.url = "github:catppuccin/nix";
+    disko = {
+      url = "github:nix-community/disko";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs =
-    inputs@{ self, ... }:
-    inputs.flake-parts.lib.mkFlake { inherit inputs; } {
+    inputs@{
+      catppuccin,
+      flake-parts,
+      home-manager,
+      nixpkgs,
+      treefmt-nix,
+      ...
+    }:
+    flake-parts.lib.mkFlake { inherit inputs; } {
       systems = [
         "x86_64-linux"
         "aarch64-linux"
       ];
-      imports = [
-        inputs.nixos-flake.flakeModule
-        inputs.treefmt-nix.flakeModule
-      ];
+      imports = [ treefmt-nix.flakeModule ];
 
       flake = {
         # Configurations for Linux (NixOS) machines
-        nixosConfigurations.azurite = self.nixos-flake.lib.mkLinuxSystem {
-          nixpkgs.hostPlatform = "aarch64-linux";
-          imports = [
-            # Setup home-manager in NixOS config
-            ./hosts/azurite
-            ./nixos
-            inputs.catppuccin.nixosModules.catppuccin
-            self.nixosModules.home-manager
-            {
-              crystal-cavern.roles.server = true;
-              home-manager.users = {
-                azurite = {
-                  home.stateVersion = "23.11";
-                  imports = [
-                    inputs.catppuccin.homeManagerModules.catppuccin
-                    self.homeModules.default
-                  ];
+        nixosConfigurations = {
+          azurite = nixpkgs.lib.nixosSystem {
+            system = "aarch64-linux";
+            modules = [
+              # Setup home-manager in NixOS config
+              ./hosts/azurite
+              ./nixos
+              catppuccin.nixosModules.catppuccin
+              home-manager.nixosModules.home-manager
+              {
+                crystal-cavern.roles.server = true;
+                home-manager.users = {
+                  azurite = {
+                    home.stateVersion = "23.11";
+                    imports = [
+                      catppuccin.homeManagerModules.catppuccin
+                      ./home
+                    ];
+                  };
+                  root = {
+                    home.stateVersion = "23.11";
+                    imports = [
+                      catppuccin.homeManagerModules.catppuccin
+                      ./home
+                    ];
+                  };
                 };
-                root = {
-                  home.stateVersion = "23.11";
-                  imports = [
-                    inputs.catppuccin.homeManagerModules.catppuccin
-                    self.homeModules.default
-                  ];
+              }
+            ];
+          };
+          quartz = nixpkgs.lib.nixosSystem {
+            system = "aarch64-linux";
+            modules = [
+              ./hosts/quartz
+              ./nixos
+              catppuccin.nixosModules.catppuccin
+              home-manager.nixosModules.home-manager
+              {
+                crystal-cavern.roles.server = true;
+                home-manager.users = {
+                  quartz = {
+                    home.stateVersion = "23.11";
+                    imports = [
+                      catppuccin.homeManagerModules.catppuccin
+                      ./home
+                    ];
+                  };
+                  root = {
+                    home.stateVersion = "23.11";
+                    imports = [
+                      catppuccin.homeManagerModules.catppuccin
+                      ./home
+                    ];
+                  };
                 };
-              };
-            }
-          ];
-        };
-
-        # home-manager configuration goes here.
-        homeModules.default = _: {
-          imports = [ ./home ];
-          crystal-cavern.zsh.enable = true;
+              }
+            ];
+          };
         };
       };
       perSystem =
