@@ -23,6 +23,7 @@
     syncthing
     nix-tree
     ffmpeg
+    micro
   ];
 
   nix.settings.experimental-features = [

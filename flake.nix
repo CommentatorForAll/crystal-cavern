@@ -22,6 +22,7 @@
   outputs =
     inputs@{
       catppuccin,
+      disko,
       flake-parts,
       home-manager,
       nixpkgs,
@@ -73,6 +74,7 @@
               ./hosts/quartz
               ./nixos
               catppuccin.nixosModules.catppuccin
+              disko.nixosModules.disko
               home-manager.nixosModules.home-manager
               {
                 crystal-cavern.roles.server = true;
