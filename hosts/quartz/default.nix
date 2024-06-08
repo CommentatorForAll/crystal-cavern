@@ -18,6 +18,7 @@
   boot.loader.efi.canTouchEfiVariables = true;
 
   networking.hostName = "quartz"; # Define your hostname.
+  networking.hostId = "8bd12591";
   environment.systemPackages = with pkgs; [
     micro
     wget
