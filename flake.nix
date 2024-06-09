@@ -1,4 +1,5 @@
 {
+  nixConfig.allow-import-from-derivation = true;
   inputs = {
     # Principle inputs (updated by `nix run .#update`)
     nixpkgs.url = "github:nixos/nixpkgs/nixos-24.05";
@@ -27,6 +28,7 @@
       home-manager,
       nixpkgs,
       treefmt-nix,
+      self,
       ...
     }:
     flake-parts.lib.mkFlake { inherit inputs; } {
@@ -105,7 +107,7 @@
               catppuccin.nixosModules.catppuccin
               home-manager.nixosModules.home-manager
               {
-                cyrstal-cavern.roles.desktop = true;
+                crystal-cavern.roles.desktop = true;
                 home-manager.users = {
                   kyanite = {
                     home.stateVersion = "23.11";
@@ -129,7 +131,13 @@
         };
       };
       perSystem =
-        { pkgs, ... }:
+        {
+          lib,
+          pkgs,
+          system,
+          self',
+          ...
+        }:
         {
           devShells.default = pkgs.mkShell {
             nativeBuildInputs = with pkgs; [
@@ -145,6 +153,14 @@
               statix.enable = true;
             };
           };
+          checks =
+            let
+              nixosMachines = lib.mapAttrs' (
+                name: config: lib.nameValuePair "nixos-${name}" config.config.system.build.toplevel
+              ) ((lib.filterAttrs (_: config: config.pkgs.system == system)) self.nixosConfigurations);
+              devShells = lib.mapAttrs' (n: lib.nameValuePair "devShell-${n}") self'.devShells;
+            in
+            nixosMachines // devShells;
         };
     };
 }

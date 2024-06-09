@@ -3,5 +3,6 @@ _: {
     ./starship.nix
     ./zsh.nix
     ./git.nix
+    ./gui.nix
   ];
 }

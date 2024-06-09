@@ -4,8 +4,11 @@
   pkgs,
   ...
 }:
+let
+  enabled = config.crystal-cavern.roles.desktop;
+in
 {
-  config = {
+  config = lib.mkIf enabled {
     services = {
       desktopManager.plasma6.enable = true;
       dbus.enable = true;
@@ -74,11 +77,11 @@
                   ];
                 }
               ))
-                { inherit (config.nixpkgs) config; };
+                { inherit (config.nixpkgs) config system; };
           in
           pkgsPatched.vivaldi.override { qt = self.qt6; };
       })
     ];
   };
-  options.crystal-cavern.roles.server = lib.mkEnableOption "This is a Server";
+  options.crystal-cavern.roles.desktop = lib.mkEnableOption "This is a Desktop";
 }

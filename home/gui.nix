@@ -32,7 +32,7 @@ in
     services = {
       flameshot = {
         enable = true;
-        settings = {
+        settings.General = {
           drawThickness = 13;
           startupLaunch = true;
           useJpgForClipboard = false;
