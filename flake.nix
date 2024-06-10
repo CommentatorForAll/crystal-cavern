@@ -18,6 +18,11 @@
       url = "github:nix-community/disko";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    plasma-manager = {
+      url = "github:pjones/plasma-manager";
+      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.home-manager.follows = "home-manager";
+    };
   };
 
   outputs =
@@ -106,6 +111,7 @@
               ./nixos
               catppuccin.nixosModules.catppuccin
               home-manager.nixosModules.home-manager
+              inputs.plasma-manager.homeManagerModules.plasma-manager
               {
                 crystal-cavern.roles.desktop = true;
                 home-manager.users = {
