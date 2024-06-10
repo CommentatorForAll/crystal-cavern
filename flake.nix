@@ -127,6 +127,7 @@
                   root = {
                     home.stateVersion = "23.11";
                     imports = [
+                      plasma-manager.homeManagerModules.plasma-manager
                       catppuccin.homeManagerModules.catppuccin
                       ./home
                     ];

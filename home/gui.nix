@@ -34,7 +34,7 @@ in
         };
         configFile = {
           "plasma-localerc"."Formats"."LANG" = "de_DE.UTF-8";
-          "plasma-localerc"."Translations"."LANGUAGE" = "en_US";
+          "plasma-localerc"."Translations"."LANGUAGE" = "en_US.UTF-8";
         };
         workspace = {
           theme = "breeze-dark";
