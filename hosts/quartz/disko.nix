@@ -39,33 +39,32 @@
           canmount = "off";
 
           compression = "zstd";
-          encryption = "aes-256-gcm";
-          keyformat = "passphrase";
-          keylocation = "file:///tmp/secret.key";
-
           "com.sun:auto-snapshot" = "false";
         };
         mountpoint = "/";
-        postCreateHook = ''
-          zfs list -t snapshot -H -o name | grep -E '^zroot@blank$' || zfs snapshot zroot@blank
-          zfs set keylocation="prompt" zroot
-        '';
+        postCreateHook = "zfs list -t snapshot -H -o name | grep -E '^zroot@blank$' || zfs snapshot zroot@blank";
 
         datasets = {
-          "system/root" = {
-            type = "zfs_fs";
-            mountpoint = "/";
-            options.mountpoint = "legacy";
-          };
           "system/store" = {
             type = "zfs_fs";
             mountpoint = "/nix";
             options.mountpoint = "legacy";
           };
+          keep = {
+            type = "zfs_fs";
+            options = {
+              mountpoint = "none";
+              encryption = "aes-256-gcm";
+              keyformat = "passphrase";
+              keylocation = "file:///tmp/secret.key";
+            };
+            postCreateHook = ''
+              zfs set keylocation="prompt" "zroot/$name"
+            '';
+          };
           "keep/persist" = {
             type = "zfs_fs";
-            mountpoint = "/persist";
-            options.mountpoint = "legacy";
+            options.mountpoint = "/persist";
           };
         };
       };

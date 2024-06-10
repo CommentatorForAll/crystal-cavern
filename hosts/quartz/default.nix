@@ -1,24 +1,47 @@
-# Edit this configuration file to define what should be installed on
-# your system. Help is available in the configuration.nix(5) man page, on
-# https://search.nixos.org/options and in the NixOS manual (`nixos-help`).
-
-{ pkgs, ... }:
-
+{ lib, pkgs, ... }:
+let
+  keys = import ../../keys.nix;
+in
 {
   imports = [
     # Include the results of the hardware scan.
-    ./hardware-configuration.nix
+    ./hardware.nix
     ./users.nix
     ./services
     ./disko.nix
   ];
 
   # Use the systemd-boot EFI boot loader.
-  boot.loader.systemd-boot.enable = true;
-  boot.loader.efi.canTouchEfiVariables = true;
+  boot = {
+    initrd = {
+      network = {
+        enable = true;
+        udhcpc.enable = lib.mkDefault true;
 
-  networking.hostName = "quartz"; # Define your hostname.
-  networking.hostId = "8bd12591";
+        postCommands = ''
+          if type "zpool" > /dev/null; then
+            # Import all pools
+            zpool import -a
+          fi
+        '';
+        ssh = {
+          enable = true;
+          port = 2222;
+          authorizedKeys = keys.ssh;
+          hostKeys = [ "/persist/secrets/ssh/initrd/ssh_host_ed25519_key" ];
+        };
+      };
+    };
+    loader = {
+      systemd-boot.enable = true;
+      efi.canTouchEfiVariables = true;
+    };
+  };
+
+  networking = {
+    hostName = "quartz"; # Define your hostname.
+    hostId = "8bd12591";
+  };
   environment.systemPackages = with pkgs; [
     micro
     wget

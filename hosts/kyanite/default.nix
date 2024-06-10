@@ -16,7 +16,7 @@
   boot.loader.efi.canTouchEfiVariables = true;
 
   networking.hostName = "kyanite"; # Define your hostname.
-  networking.networkmanager.enable = true
+  networking.networkmanager.enable = true;
   environment.systemPackages = with pkgs; [ musescore ];
 
   time.timeZone = "Europe/Berlin";
