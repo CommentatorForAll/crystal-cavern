@@ -48,7 +48,7 @@
           "system/root" = {
             type = "zfs_fs";
             mountpoint = "/";
-            options."com.sun:auto-snapshot" = false;
+            options."com.sun:auto-snapshot" = "false";
           };
           "system/store" = {
             type = "zfs_fs";

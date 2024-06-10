@@ -1,4 +1,9 @@
-{ lib, pkgs, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}:
 let
   keys = import ../../keys.nix;
 in
@@ -32,10 +37,27 @@ in
         };
       };
     };
+
     loader = {
-      systemd-boot.enable = true;
+      grub = {
+        enable = true;
+        efiSupport = true;
+        zfsSupport = true;
+        mirroredBoots = [
+          {
+            devices = [ "nodev" ];
+            path = "/boot";
+          }
+        ];
+      };
+
       efi.canTouchEfiVariables = true;
     };
+    zfs = {
+      allowHibernation = true;
+      forceImportRoot = false;
+    };
+    kernelPackages = config.boot.zfs.package.latestCompatibleLinuxPackages;
   };
 
   networking = {
