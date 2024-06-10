@@ -31,6 +31,7 @@
       disko,
       flake-parts,
       home-manager,
+      plasma-manager,
       nixpkgs,
       treefmt-nix,
       self,
@@ -111,7 +112,6 @@
               ./nixos
               catppuccin.nixosModules.catppuccin
               home-manager.nixosModules.home-manager
-              inputs.plasma-manager.homeManagerModules.plasma-manager
               {
                 crystal-cavern.roles.desktop = true;
                 home-manager.users = {
@@ -119,6 +119,7 @@
                     home.stateVersion = "23.11";
                     crystal-cavern.gui = true;
                     imports = [
+                      plasma-manager.homeManagerModules.plasma-manager
                       catppuccin.homeManagerModules.catppuccin
                       ./home
                     ];
