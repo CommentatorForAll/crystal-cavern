@@ -14,6 +14,7 @@
                 type = "filesystem";
                 format = "vfat";
                 mountpoint = "/boot";
+                mountOptions = [ "nofail" ];
               };
             };
             zfs = {
@@ -53,7 +54,6 @@
           "system/store" = {
             type = "zfs_fs";
             mountpoint = "/nix";
-            options.mountpoint = "legacy";
           };
           keep = {
             type = "zfs_fs";
@@ -69,7 +69,7 @@
           };
           "keep/persist" = {
             type = "zfs_fs";
-            options.mountpoint = "/persist";
+            mountpoint = "/persist";
           };
         };
       };
