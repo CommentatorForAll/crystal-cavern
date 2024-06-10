@@ -33,7 +33,7 @@ in
           enable = true;
           port = 2222;
           authorizedKeys = keys.ssh;
-          hostKeys = [ "/persist/secrets/ssh/initrd/ssh_host_ed25519_key" ];
+          hostKeys = [ "/etc/secrets/initrd/ssh_host_ed25519_key" ];
         };
       };
     };
