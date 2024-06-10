@@ -45,6 +45,11 @@
         postCreateHook = "zfs list -t snapshot -H -o name | grep -E '^zroot@blank$' || zfs snapshot zroot@blank";
 
         datasets = {
+          "system/root" = {
+            type = "zfs_fs";
+            mountpoint = "/";
+            options."com.sun:auto-snapshot" = false;
+          };
           "system/store" = {
             type = "zfs_fs";
             mountpoint = "/nix";
