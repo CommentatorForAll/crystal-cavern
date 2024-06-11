@@ -43,12 +43,7 @@ in
         enable = true;
         efiSupport = true;
         zfsSupport = true;
-        mirroredBoots = [
-          {
-            devices = [ "nodev" ];
-            path = "/boot";
-          }
-        ];
+        device = "nodev";
       };
 
       efi.canTouchEfiVariables = true;
