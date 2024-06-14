@@ -45,6 +45,7 @@ in
       kdePackages.korganizer
       kdePackages.akonadi # dep for korganizer for caldav support
       kdePackages.kdepim-runtime # dep for korganizer for caldav support
+      kdePackages.juk
       _4d-minesweeper
       syncthingtray
     ];

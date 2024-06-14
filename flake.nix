@@ -164,6 +164,28 @@
               }
             ];
           };
+          amethyst = nixpkgs.lib.nixosSystem {
+            system = "x86_64-linux";
+            modules = [
+              ./hosts/amethyst
+              ./nixos
+              catppuccin.nixosModules.catppuccin
+              home-manager.nixosModules.home-manager
+              {
+                crystal-cavern.roles.desktop = true;
+                home-manager.users = {
+                  home.stateVersion = "24.05";
+                  crystal-cavern.gui = true;
+                  crystal-cavern.gayming = true;
+                  imports = [
+                    plasma-manager.homeManagerModules.plasma-manager
+                    catppuccin.homeManagerModules.catppuccin
+                    ./home
+                  ];
+                };
+              }
+            ];
+          };
         };
       };
       perSystem =

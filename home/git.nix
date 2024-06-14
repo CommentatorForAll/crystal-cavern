@@ -17,6 +17,7 @@ _: {
       pull.rebase = true;
       merge.conflictstyle = "zdiff3";
       rerere.enabled = true;
+      push.autoSetupRemote = true;
 
       url = {
         "git@github.com:".insteadOf = "gh:";
