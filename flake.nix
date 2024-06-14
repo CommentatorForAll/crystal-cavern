@@ -8,7 +8,9 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    flake-parts={url = "github:hercules-ci/flake-parts";};
+    flake-parts = {
+      url = "github:hercules-ci/flake-parts";
+    };
     treefmt-nix = {
       url = "github:numtide/treefmt-nix";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -23,10 +25,27 @@
       inputs.nixpkgs.follows = "nixpkgs";
       inputs.home-manager.follows = "home-manager";
     };
+    authentik-nix = {
+      url = "github:nix-community/authentik-nix/node-22";
+      inputs = {
+        nixpkgs.follows = "nixpkgs";
+        flake-parts.follows = "flake-parts";
+      };
+    };
+    agenix = {
+      url = "github:ryantm/agenix";
+      inputs = {
+        nixpkgs.follows = "nixpkgs";
+        home-manager.follows = "home-manager";
+        darwin.follows = "";
+      };
+    };
   };
 
   outputs =
     inputs@{
+      agenix,
+      authentik-nix,
       catppuccin,
       disko,
       flake-parts,
@@ -83,11 +102,20 @@
               ./nixos
               catppuccin.nixosModules.catppuccin
               disko.nixosModules.disko
+              agenix.nixosModules.default
+              authentik-nix.nixosModules.default
               home-manager.nixosModules.home-manager
               {
                 crystal-cavern.roles.server = true;
                 home-manager.users = {
                   quartz = {
+                    home.stateVersion = "23.11";
+                    imports = [
+                      catppuccin.homeManagerModules.catppuccin
+                      ./home
+                    ];
+                  };
+                  code-server = {
                     home.stateVersion = "23.11";
                     imports = [
                       catppuccin.homeManagerModules.catppuccin
@@ -149,6 +177,7 @@
         {
           devShells.default = pkgs.mkShell {
             nativeBuildInputs = with pkgs; [
+              agenix.packages.${system}.default
               deadnix
               statix
               nixfmt-rfc-style

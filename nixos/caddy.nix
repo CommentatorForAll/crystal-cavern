@@ -9,6 +9,17 @@ let
       }
       redir @not-allowed https://www.youtube.com/watch?v=dQw4w9WgXcQ
   '';
+  sso = ''
+    # always forward outpost path to actual outpost
+    reverse_proxy /outpost.goauthentik.io/* ${cfg.sso}
+    # forward authentication to outpost
+    @extern not client_ip private_ranges
+    forward_auth @extern ${cfg.sso} {
+        uri /outpost.goauthentik.io/auth/caddy
+        copy_headers X-Authentik-Username X-Authentik-Groups X-Authentik-Email X-Authentik-Name X-Authentik-Uid X-Authentik-Jwt X-Authentik-Meta-Jwks X-Authentik-Meta-Outpost X-Authentik-Meta-Provider X-Authentik-Meta-App X-Authentik-Meta-Version
+        trusted_proxies 10.0.1.0/16 172.16.0.0/16 fc00::/7 100.64.0.0/16
+    }
+  '';
 in
 {
   config = lib.mkIf (cfg.routes != { }) {
@@ -26,6 +37,7 @@ in
         extraConfig = lib.concatStringsSep "\n" (
           [ route.extra ]
           ++ lib.optionals route.no-robots [ no-robots ]
+          ++ lib.optionals route.useSso [ sso ]
           ++ lib.optionals (route.host != null) [ "reverse_proxy ${route.host}" ]
           ++ lib.optionals (route.redir != null) [ "redir https://${route.redir}{uri}" ]
           ++ lib.optionals (route.port != null) [ "reverse_proxy localhost:${toString route.port}" ]
@@ -84,6 +96,11 @@ in
       description = "Extra configuration to add to the generated Caddyfile.";
       default = "";
     };
+    sso = lib.mkOption {
+      type = lib.types.str;
+      description = "Authentik Host Url";
+      default = "https://auth.blackdemon.tech";
+    };
 
     readDirs = lib.mkOption {
       type = lib.types.listOf lib.types.path;
@@ -133,6 +150,11 @@ in
                   type = lines;
                   default = "";
                   description = "Additional configuration to add to the host.";
+                };
+                useSso = lib.mkOption {
+                  type = bool;
+                  default = false;
+                  description = "Whether to protect this service behind authentik";
                 };
               };
             }

@@ -1,1 +1,7 @@
-_: { imports = [ ]; }
+_: {
+  imports = [
+    ./authentik.nix
+    ./code-server.nix
+    ./postgres.nix
+  ];
+}
