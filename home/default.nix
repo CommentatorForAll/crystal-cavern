@@ -4,5 +4,6 @@ _: {
     ./zsh.nix
     ./git.nix
     ./gui.nix
+    ./gayming.nix
   ];
 }

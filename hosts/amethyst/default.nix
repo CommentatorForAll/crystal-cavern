@@ -6,7 +6,8 @@
         ./users.nix
     ];
 
-    boot.loader.system-boot.enable = true;
+	boot.loader.systemd-boot.enable = true;
+	boot.loader.grub.enable = false;
     boot.loader.efi.canTouchEfiVariables = true;
 
     networking.hostName = "amethyst";
@@ -16,6 +17,15 @@
         element-desktop
         discord
     ];
+
+	boot.initrd.luks.devices = {
+		root = {
+			device = "/dev/nvme0n1p2";
+			preLVM = true;
+		};
+	};
+
+	# boot.loader.grub.device = "/dev/nvme0n1";
 
     time.timeZone = "Europe/Berlin";
 

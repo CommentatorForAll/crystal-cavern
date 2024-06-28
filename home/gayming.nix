@@ -9,11 +9,9 @@ let
 in
 {
     config = lib.mkIf enabled {
+    	nixpkgs.config.allowUnfree = true;
         home.packages = with pkgs; [ lutris ];
         programs = {
-            steam = {
-                enable = true;
-            };
         };
     };
 

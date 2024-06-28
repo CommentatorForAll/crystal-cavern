@@ -173,7 +173,7 @@
               home-manager.nixosModules.home-manager
               {
                 crystal-cavern.roles.desktop = true;
-                home-manager.users = {
+                home-manager.users.amethyst = {
                   home.stateVersion = "24.05";
                   crystal-cavern.gui = true;
                   crystal-cavern.gayming = true;
