@@ -62,7 +62,7 @@ in
           oh-my-zsh = {
             enable = true;
             extraConfig = ''
-              # don't sort git branches
+              # don t sort git branches
               zstyle ':completion:*:git-checkout:*' sort false
               # set descriptions format to enable group support
               # NOTE: don't use escape sequences here, fzf-tab will ignore them
@@ -105,6 +105,7 @@ in
               echo $PATH | tr ':' ' '
             '';
             tree = "eza --tree";
+            retoot = "reboot";
           };
           envExtra = ''
             export PATH=$PATH:$HOME/.local/bin
