@@ -51,6 +51,7 @@
   services.openssh = {
     enable = true;
     openFirewall = true;
+    settings.LoginGraceTime = 0;
   };
 
   # Open ports in the firewall.

@@ -28,21 +28,21 @@ in
           "welcome.enabled" = false;
         };
       };
-      plasma = {
-        shortcuts = {
-          "services/org.flameshot.Flameshot.desktop"."Capture" = "Print";
-        };
-        configFile = {
-          "plasma-localerc"."Formats"."LANG" = "de_DE.UTF-8";
-          "plasma-localerc"."Translations"."LANGUAGE" = "en_US.UTF-8";
-        };
-        workspace = {
-          theme = "breeze-dark";
-          colorScheme = "BreezeDark";
-          cursorTheme = "breeze_cursors";
-          lookAndFeel = "org.kde.breezedark.desktop";
-        };
-      };
+      #plasma = {
+      #  shortcuts = {
+      #    "services/org.flameshot.Flameshot.desktop"."Capture" = "Print";
+      #  };
+      #  configFile = {
+      #    "plasma-localerc"."Formats"."LANG" = "de_DE.UTF-8";
+      #    "plasma-localerc"."Translations"."LANGUAGE" = "en_US.UTF-8";
+      #  };
+      #  workspace = {
+      #    theme = "breeze-dark";
+      #    colorScheme = "BreezeDark";
+      #    cursorTheme = "breeze_cursors";
+      #    lookAndFeel = "org.kde.breezedark.desktop";
+      #  };
+      #};
     };
     services = {
       flameshot = {
