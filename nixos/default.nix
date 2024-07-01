@@ -6,5 +6,6 @@ _: {
     ./desktop.nix
     ./server.nix
     ./persist.nix
+    ./gayming.nix
   ];
 }

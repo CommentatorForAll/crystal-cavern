@@ -39,7 +39,7 @@ in
         workspace = {
           theme = "breeze-dark";
           colorScheme = "BreezeDark";
-          cursorTheme = "breeze_cursors";
+          cursor.theme = "breeze_cursors";
           lookAndFeel = "org.kde.breezedark.desktop";
         };
       };

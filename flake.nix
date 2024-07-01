@@ -173,11 +173,11 @@
               home-manager.nixosModules.home-manager
               {
                 crystal-cavern.roles.desktop = true;
+                crystal-cavern.roles.gayming = true;
                 home-manager.users = {
                   amethyst = {
                     home.stateVersion = "24.05";
                     crystal-cavern.gui = true;
-                    crystal-cavern.gayming = true;
                     imports = [
                       plasma-manager.homeManagerModules.plasma-manager
                       catppuccin.homeManagerModules.catppuccin
@@ -185,12 +185,12 @@
                     ];
                   };
                   root = {
-                  	home.stateVersion = "24.05";
-                  	imports = [
-                  		plasma-manager.homeManagerModules.plasma-manager
-                  		catppuccin.homeManagerModules.catppuccin
-                  		./home
-                  	];
+                    home.stateVersion = "24.05";
+                    imports = [
+                      plasma-manager.homeManagerModules.plasma-manager
+                      catppuccin.homeManagerModules.catppuccin
+                      ./home
+                    ];
                   };
                 };
               }

@@ -23,6 +23,9 @@ in
         variant = "altgr-intl";
       };
     };
+    programs = {
+      xwayland.enable = true;
+    };
 
     hardware.pulseaudio.enable = true;
 
