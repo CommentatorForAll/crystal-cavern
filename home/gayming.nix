@@ -10,9 +10,7 @@ in
 {
     config = lib.mkIf enabled {
     	nixpkgs.config.allowUnfree = true;
-        home.packages = with pkgs; [ lutris ];
-        programs = {
-        };
+        home.packages = with pkgs; [ lutris steam ];
     };
 
     options.crystal-cavern.gayming = lib.mkOption {
