@@ -9,6 +9,8 @@ let
 in
 {
   config = lib.mkIf enabled {
+    crystal-cavern.persist.syncthing-dataDir.path = config.services.syncthing.configDir;
+
     services = {
       desktopManager.plasma6.enable = true;
       dbus.enable = true;
@@ -22,10 +24,39 @@ in
         layout = "us";
         variant = "altgr-intl";
       };
+      syncthing = {
+        enable = true;
+        user = config.networking.hostName;
+        group = config.networking.hostName;
+        dataDir = "/home/${config.networking.hostName}";
+
+#         systemService = true;
+#
+#         # Required to establish connection to azurite
+#         relay.enable = true;
+#         settings = {
+#           options = {
+#             urAccepted = -1;
+#           };
+#           folders = {
+# #             "/home/${config.networking.hostName}/.config/joplin-desktop/plugins" = {
+# #               id = "joplin-plugins";
+# #               devices = [ "kyanite" "amethyst" "azurite" ];
+# #             };
+#           };
+#         };
+#         overrideFolders = false;
+#         overrideDevices = false;
+      };
     };
     programs = {
       xwayland.enable = true;
     };
+
+    systemd.services.syncthing.serviceConfig.ReadWriteDirectories = [
+      "/home/${config.networking.hostName}/"
+      config.crystal-cavern.persist.syncthing-dataDir.path
+    ];
 
     hardware.pulseaudio.enable = true;
 
@@ -49,8 +80,8 @@ in
       kdePackages.akonadi # dep for korganizer for caldav support
       kdePackages.kdepim-runtime # dep for korganizer for caldav support
       kdePackages.juk
-      _4d-minesweeper
       syncthingtray
+      _4d-minesweeper
     ];
 
     environment.plasma6.excludePackages = with pkgs.kdePackages; [
@@ -60,6 +91,9 @@ in
       spectacle
       kwrited
     ];
+
+    environment.sessionVariables.NIXOS_OZONE_WL = "1";
+
 
     # Vivaldi and some IDEs require this
 

@@ -20,7 +20,6 @@
     wget
     curl
     fastfetch
-    syncthing
     nix-tree
     ffmpeg
     micro

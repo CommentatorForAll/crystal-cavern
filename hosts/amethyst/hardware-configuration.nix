@@ -61,6 +61,8 @@
   services.xserver.videoDrivers = [ "nvidia" ];
   hardware.opengl.extraPackages = [
     (pkgs.libva-vdpau-driver or pkgs.vaapiVdpau)
+    libglvnd
+    nvidia-settings
   ];
 
   hardware.nvidia = {
