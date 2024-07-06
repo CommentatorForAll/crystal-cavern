@@ -30,23 +30,22 @@ in
         group = config.networking.hostName;
         dataDir = "/home/${config.networking.hostName}";
 
-#         systemService = true;
-#
-#         # Required to establish connection to azurite
-#         relay.enable = true;
-#         settings = {
-#           options = {
-#             urAccepted = -1;
-#           };
+        systemService = true;
+        # Required to establish connection to azurite
+        relay.enable = true;
+        settings = {
+          options = {
+            urAccepted = -1;
+          };
 #           folders = {
 # #             "/home/${config.networking.hostName}/.config/joplin-desktop/plugins" = {
 # #               id = "joplin-plugins";
 # #               devices = [ "kyanite" "amethyst" "azurite" ];
 # #             };
 #           };
-#         };
-#         overrideFolders = false;
-#         overrideDevices = false;
+        };
+        overrideFolders = false;
+        overrideDevices = false;
       };
     };
     programs = {
@@ -87,7 +86,6 @@ in
     environment.plasma6.excludePackages = with pkgs.kdePackages; [
       plasma-browser-integration
       oxygen
-      elisa
       spectacle
       kwrited
     ];

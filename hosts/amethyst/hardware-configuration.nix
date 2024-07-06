@@ -25,6 +25,7 @@
     "kvm-amd"
     "wl"
   ];
+  boot.kernelParams = [ "nvidia-drm.fbdev=1" ];
   boot.supportedFilesystems = [ "ntfs" ];
   boot.extraModulePackages = [ config.boot.kernelPackages.broadcom_sta ];
 
@@ -59,10 +60,9 @@
 
   # Load nvidia driver for Xorg and Wayland
   services.xserver.videoDrivers = [ "nvidia" ];
-  hardware.opengl.extraPackages = [
+  hardware.opengl.extraPackages = with pkgs; [
     (pkgs.libva-vdpau-driver or pkgs.vaapiVdpau)
     libglvnd
-    nvidia-settings
   ];
 
   hardware.nvidia = {

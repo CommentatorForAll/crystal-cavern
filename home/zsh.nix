@@ -108,6 +108,7 @@ in
             retoot = "reboot";
             element-desktop = "element-desktop --enable-features=UseOzonePlatform --ozone-platform=wayland";
             webcord = "webcord --enable-features=UseOzonePlatform --ozone-platform=wayland";
+            joplin-desktop = "joplin-desktop --disable-gpu";
           };
           envExtra = ''
             export PATH=$PATH:$HOME/.local/bin

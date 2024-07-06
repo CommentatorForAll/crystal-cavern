@@ -23,6 +23,7 @@
     nix-tree
     ffmpeg
     micro
+    ripgrep
   ];
 
   nix.settings.experimental-features = [

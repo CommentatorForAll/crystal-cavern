@@ -18,6 +18,7 @@
     musescore
     element-desktop
     webcord
+    egl-wayland
   ];
 
   boot.initrd.luks.devices = {
