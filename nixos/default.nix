@@ -3,7 +3,7 @@ _: {
     ./common.nix
     ./docker-compose.nix
     ./caddy.nix
-    ./desktop.nix
+    ./desktop
     ./server.nix
     ./persist.nix
     ./gayming.nix

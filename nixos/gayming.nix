@@ -13,6 +13,7 @@ in
     environment.systemPackages = with pkgs; [
       lutris
       wineWowPackages.waylandFull
+      prismlauncher
     ];
     programs = {
       steam = {

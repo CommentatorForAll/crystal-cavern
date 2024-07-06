@@ -79,6 +79,9 @@ in
       kdePackages.akonadi # dep for korganizer for caldav support
       kdePackages.kdepim-runtime # dep for korganizer for caldav support
       kdePackages.juk
+      kdePackages.kio-fuse # dep for smb discovery?
+      kdePackages.kio-zeroconf
+      kdePackages.kio-extras
       syncthingtray
       _4d-minesweeper
     ];
