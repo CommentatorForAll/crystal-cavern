@@ -14,6 +14,20 @@ in
     services = {
       desktopManager.plasma6.enable = true;
       dbus.enable = true;
+      printing = {
+        enable = true;
+        cups-pdf = {
+          enable = true;
+          instances = {
+            pdf = {
+              settings = {
+                Out = "\${HOME}/Documents";
+                UserUMask = "0033";
+              };
+            };
+          };
+        };
+      };
       displayManager.sddm = {
         enable = true;
         wayland.enable = true;
