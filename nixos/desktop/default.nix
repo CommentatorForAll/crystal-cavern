@@ -37,12 +37,12 @@ in
           options = {
             urAccepted = -1;
           };
-#           folders = {
-# #             "/home/${config.networking.hostName}/.config/joplin-desktop/plugins" = {
-# #               id = "joplin-plugins";
-# #               devices = [ "kyanite" "amethyst" "azurite" ];
-# #             };
-#           };
+          #           folders = {
+          # #             "/home/${config.networking.hostName}/.config/joplin-desktop/plugins" = {
+          # #               id = "joplin-plugins";
+          # #               devices = [ "kyanite" "amethyst" "azurite" ];
+          # #             };
+          #           };
         };
         overrideFolders = false;
         overrideDevices = false;
@@ -94,7 +94,6 @@ in
     ];
 
     environment.sessionVariables.NIXOS_OZONE_WL = "1";
-
 
     # Vivaldi and some IDEs require this
 
