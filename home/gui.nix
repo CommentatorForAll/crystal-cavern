@@ -8,6 +8,7 @@
 let
   enabled = config.crystal-cavern.gui;
   enablePlasma = builtins.hasAttr "plasma" options.programs;
+  unstable = import (builtins.fetchTarball {url = "https://github.com/NixOS/nixpkgs/archive/nixos-unstable.tar.gz"; sha256 = "1vc8bzz04ni7l15a9yd1x7jn0bw2b6rszg1krp6bcxyj3910pwb7";}){ inherit (pkgs) system; };
 in
 {
   config = lib.mkIf enabled {
@@ -16,6 +17,7 @@ in
       {
         joplin-desktop = {
           enable = true;
+          package = unstable.joplin-desktop;
           sync = {
             interval = "5m";
             target = "joplin-server";

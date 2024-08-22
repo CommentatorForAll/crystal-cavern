@@ -47,17 +47,17 @@ in
         systemService = true;
         # Required to establish connection to azurite
         relay.enable = true;
-        settings = {
-          options = {
-            urAccepted = -1;
-          };
+        # settings = {
+        #   options = {
+        #    urAccepted = -1;
+        #  };
           #           folders = {
           # #             "/home/${config.networking.hostName}/.config/joplin-desktop/plugins" = {
           # #               id = "joplin-plugins";
           # #               devices = [ "kyanite" "amethyst" "azurite" ];
           # #             };
           #           };
-        };
+        #};
         overrideFolders = false;
         overrideDevices = false;
       };
