@@ -96,8 +96,10 @@ in
       kdePackages.kio-fuse # dep for smb discovery?
       kdePackages.kio-zeroconf
       kdePackages.kio-extras
+      kdePackages.libkscreen
       syncthingtray
       _4d-minesweeper
+      unrar
     ];
 
     environment.plasma6.excludePackages = with pkgs.kdePackages; [

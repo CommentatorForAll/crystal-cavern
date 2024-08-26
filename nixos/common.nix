@@ -24,6 +24,7 @@
     ffmpeg
     micro
     ripgrep
+    unzip
   ];
 
   nix.settings.experimental-features = [

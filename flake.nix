@@ -71,6 +71,9 @@
           ...
         }:
         {
+          packages = {
+          	yomikiru = pkgs.callPackage ./pkgs/yomikiru.nix {};
+          };
           devShells.default = pkgs.mkShell {
             nativeBuildInputs = with pkgs; [
               agenix.packages.${system}.default
