@@ -11,6 +11,7 @@
 {
   imports = [ (modulesPath + "/installer/scan/not-detected.nix") ];
 
+  hardware.bluetooth.enable = true; # enables support for Bluetooth
   boot.initrd.availableKernelModules = [
     "xhci_pci"
     "ahci"
