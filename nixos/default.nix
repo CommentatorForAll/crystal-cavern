@@ -4,7 +4,7 @@ _: {
     ./docker-compose.nix
     ./caddy.nix
     ./desktop
-    ./server.nix
+    ./server
     ./persist.nix
     ./gayming.nix
   ];

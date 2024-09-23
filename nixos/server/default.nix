@@ -8,6 +8,10 @@ let
   enabled = config.crystal-cavern.roles.server;
 in
 {
+  imports = [
+    ./grafana.nix
+    ./prometheus.nix
+  ];
   options.crystal-cavern.roles.server = lib.mkEnableOption "This is a Server";
   config = lib.mkIf enabled { environment.systemPackages = with pkgs; [ apacheHttpd ]; };
 }

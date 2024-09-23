@@ -1,5 +1,13 @@
 {
-  nixConfig.allow-import-from-derivation = true;
+  nixConfig = {
+    allow-import-from-derivation = true;
+    extra-substituters = [
+      "https://nix-community.cachix.org"
+    ];
+    extra-trusted-public-keys = [
+      "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
+    ];
+  };
   inputs = {
     # Principle inputs (updated by `nix run .#update`)
     nixpkgs.url = "github:nixos/nixpkgs/nixos-24.05";
@@ -26,9 +34,8 @@
       inputs.home-manager.follows = "home-manager";
     };
     authentik-nix = {
-      url = "github:nix-community/authentik-nix/node-22";
+      url = "github:nix-community/authentik-nix";
       inputs = {
-        nixpkgs.follows = "nixpkgs";
         flake-parts.follows = "flake-parts";
       };
     };

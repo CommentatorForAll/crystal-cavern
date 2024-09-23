@@ -32,6 +32,11 @@ in
     services.caddy = {
       enable = true;
       extraConfig = cfg.extra;
+      globalConfig = ''
+      servers {
+      	metrics
+      }
+      '';
       virtualHosts = lib.mapAttrs (_name: route: {
         serverAliases = route.aliases;
         extraConfig = lib.concatStringsSep "\n" (

@@ -60,10 +60,18 @@
 
   # Load nvidia driver for Xorg and Wayland
   services.xserver.videoDrivers = [ "nvidia" ];
+<<<<<<< Updated upstream
   hardware.opengl.extraPackages = with pkgs; [
     (pkgs.libva-vdpau-driver or pkgs.vaapiVdpau)
     libglvnd
   ];
+||||||| Stash base
+  hardware.opengl.extraPackages = [
+    (pkgs.libva-vdpau-driver or pkgs.vaapiVdpau)
+  ];
+=======
+  hardware.opengl.extraPackages = [ (pkgs.libva-vdpau-driver or pkgs.vaapiVdpau) ];
+>>>>>>> Stashed changes
 
   hardware.nvidia = {
 
