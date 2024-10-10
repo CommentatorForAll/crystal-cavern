@@ -8,7 +8,7 @@
 let
   enabled = config.crystal-cavern.gui;
   enablePlasma = builtins.hasAttr "plasma" options.programs;
-  unstable = import (builtins.fetchTarball {url = "https://github.com/NixOS/nixpkgs/archive/nixos-unstable.tar.gz"; sha256 = "1vc8bzz04ni7l15a9yd1x7jn0bw2b6rszg1krp6bcxyj3910pwb7";}){ inherit (pkgs) system; };
+  unstable = import (builtins.fetchTarball {url = "https://github.com/NixOS/nixpkgs/archive/nixos-unstable.tar.gz"; sha256 = "12c9gz8agsajy6gbaj8m7r69d485pmccjnzgwz0szv6iys6kf812";}){ inherit (pkgs) system; };
 in
 {
   config = lib.mkIf enabled {

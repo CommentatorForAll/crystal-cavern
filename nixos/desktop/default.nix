@@ -100,7 +100,7 @@ in
       syncthingtray
       _4d-minesweeper
       unrar
-      openscad
+      openscad-unstable
     ];
 
     environment.plasma6.excludePackages = with pkgs.kdePackages; [

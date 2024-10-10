@@ -26,7 +26,7 @@
       inputs.home-manager.follows = "home-manager";
     };
     authentik-nix = {
-      url = "github:nix-community/authentik-nix/node-22";
+      url = "github:nix-community/authentik-nix";
       inputs = {
         nixpkgs.follows = "nixpkgs";
         flake-parts.follows = "flake-parts";
