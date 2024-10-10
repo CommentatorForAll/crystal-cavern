@@ -81,6 +81,7 @@
               statix
               nixfmt-rfc-style
               nil
+              npins
             ];
           };
           treefmt = {

@@ -8,11 +8,14 @@
 let
   enabled = config.crystal-cavern.gui;
   enablePlasma = builtins.hasAttr "plasma" options.programs;
-  unstable = import (builtins.fetchTarball {url = "https://github.com/NixOS/nixpkgs/archive/nixos-unstable.tar.gz"; sha256 = "12c9gz8agsajy6gbaj8m7r69d485pmccjnzgwz0szv6iys6kf812";}){ inherit (pkgs) system; };
+  unstable = import (import ../npins).nixpkgs-unstable { inherit (pkgs) system; };
 in
 {
   config = lib.mkIf enabled {
     home.packages = with pkgs; [ fira-code-nerdfont ];
+    nixpkgs.overlays = [
+    	(self: super: {inherit (unstable) kdePackages;})
+    ];
     programs =
       {
         joplin-desktop = {

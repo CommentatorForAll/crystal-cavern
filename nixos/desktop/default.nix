@@ -6,10 +6,37 @@
 }:
 let
   enabled = config.crystal-cavern.roles.desktop;
+  unstable = import (import ../../npins).nixpkgs-unstable {inherit (pkgs) system;};
 in
 {
   config = lib.mkIf enabled {
     crystal-cavern.persist.syncthing-dataDir.path = config.services.syncthing.configDir;
+
+	nixpkgs.overlays = [
+		(self: super: {inherit (unstable) 
+			kdePackages
+			openscad-unstable
+		;})
+		(self: _super: {
+		        vivaldi =
+		          let
+		            pkgsPatched =
+		              (import (
+		                self.applyPatches {
+		                  src = self.path;
+		                  patches = [
+		                    (self.fetchpatch {
+		                      url = "https://github.com/NixOS/nixpkgs/pull/292148.patch";
+		                      hash = "sha256-gaH4UxKi2s7auoaTmbBwo0t4HuT7MwBuNvC/z2vvugE=";
+		                    })
+		                  ];
+		                }
+		              ))
+		                { inherit (config.nixpkgs) config system; };
+		          in
+		          pkgsPatched.vivaldi.override { qt = self.qt6; };
+		      })
+	];
 
     services = {
       desktopManager.plasma6.enable = true;
@@ -106,7 +133,7 @@ in
     environment.plasma6.excludePackages = with pkgs.kdePackages; [
       plasma-browser-integration
       oxygen
-      spectacle
+      # spectacle
       kwrited
     ];
 
@@ -115,28 +142,6 @@ in
     # Vivaldi and some IDEs require this
 
     nixpkgs.config.allowUnfree = true;
-
-    nixpkgs.overlays = [
-      (self: _super: {
-        vivaldi =
-          let
-            pkgsPatched =
-              (import (
-                self.applyPatches {
-                  src = self.path;
-                  patches = [
-                    (self.fetchpatch {
-                      url = "https://github.com/NixOS/nixpkgs/pull/292148.patch";
-                      hash = "sha256-gaH4UxKi2s7auoaTmbBwo0t4HuT7MwBuNvC/z2vvugE=";
-                    })
-                  ];
-                }
-              ))
-                { inherit (config.nixpkgs) config system; };
-          in
-          pkgsPatched.vivaldi.override { qt = self.qt6; };
-      })
-    ];
   };
   options.crystal-cavern.roles.desktop = lib.mkEnableOption "This is a Desktop";
 }
