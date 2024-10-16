@@ -24,6 +24,8 @@
   boot.kernelModules = [
     "kvm-amd"
     "wl"
+    "k10temp"
+    "nct6775"
   ];
   boot.kernelParams = [ "nvidia-drm.fbdev=1" ];
   boot.supportedFilesystems = [ "ntfs" ];
