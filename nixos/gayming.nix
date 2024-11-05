@@ -14,6 +14,7 @@ in
       lutris
       wineWowPackages.waylandFull
       prismlauncher
+      mangohud
     ];
     programs = {
       steam = {

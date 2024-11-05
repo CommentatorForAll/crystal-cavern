@@ -25,6 +25,7 @@
     micro
     ripgrep
     unzip
+    lm_sensors
   ];
 
   nix.settings.experimental-features = [

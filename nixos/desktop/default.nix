@@ -14,7 +14,7 @@ in
 
 	nixpkgs.overlays = [
 		(self: super: {inherit (unstable) 
-			kdePackages
+			#kdePackages
 			openscad-unstable
 		;})
 		(self: _super: {
@@ -55,9 +55,15 @@ in
           };
         };
       };
-      displayManager.sddm = {
-        enable = true;
-        wayland.enable = true;
+      displayManager = {
+        autoLogin = {
+          enable = true;
+          user = config.networking.hostName;
+        };
+        sddm = {
+          enable = true;
+          wayland.enable = true;
+        };
       };
       gvfs.enable = true;
 
@@ -98,7 +104,7 @@ in
       config.crystal-cavern.persist.syncthing-dataDir.path
     ];
 
-    hardware.pulseaudio.enable = true;
+    # hardware.pulseaudio.enable = true;
 
     xdg.portal = {
       enable = true;
@@ -128,12 +134,14 @@ in
       _4d-minesweeper
       unrar
       openscad-unstable
+      element-desktop
+      vesktop
     ];
 
     environment.plasma6.excludePackages = with pkgs.kdePackages; [
       plasma-browser-integration
       oxygen
-      # spectacle
+      #spectacle
       kwrited
     ];
 

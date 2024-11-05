@@ -80,6 +80,39 @@ in
       }
     ];
   };
+  perovskite = mkHost {
+  	system = "x86_64-linux";
+  	name = "perovskite";
+  	extraModules = [
+  		{
+  		crystal-cavern.roles = {
+  			desktop = true;
+  			gayming = true;
+  		};
+  		home-manager.users = {
+  			perovskite = {
+  				home.stateVersion = "24.05";
+  				crystal-cavern.gui = true;
+  				imports = [
+  					plasma-manager.homeManagerModules.plasma-manager
+  					catppuccin.homeManagerModules.catppuccin
+  					self.homeManagerModules.default
+  					./home
+  				];
+  			};
+  			root = {
+  				home.stateVersion = "24.05";
+  				imports = [
+  					plasma-manager.homeManagerModules.plasma-manager
+  					catppuccin.homeManagerModules.catppuccin
+  					self.homeManagerModules.default
+  					./home
+  				];
+  			};
+  		};
+  		}
+  	];
+  };
   quartz = mkHost {
     system = "aarch64-linux";
     name = "quartz";

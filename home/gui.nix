@@ -40,7 +40,7 @@ in
       // lib.optionalAttrs enablePlasma {
         plasma = {
           shortcuts = {
-            "services/org.flameshot.Flameshot.desktop"."Capture" = "Print";
+            # "services/org.flameshot.Flameshot.desktop"."Capture" = "Print";
           };
           configFile = {
             "plasma-localerc"."Formats"."LANG" = "de_DE.UTF-8";
@@ -55,14 +55,14 @@ in
         };
       };
     services = {
-      flameshot = {
-        enable = true;
-        settings.General = {
-          drawThickness = 13;
-          startupLaunch = true;
-          useJpgForClipboard = false;
-        };
-      };
+#       flameshot = {
+#         enable = true;
+#         settings.General = {
+#           drawThickness = 13;
+#           startupLaunch = true;
+#           useJpgForClipboard = false;
+#         };
+#       };
     };
   };
   options.crystal-cavern.gui = lib.mkOption {
