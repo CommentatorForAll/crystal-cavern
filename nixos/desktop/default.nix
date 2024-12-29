@@ -13,29 +13,28 @@ in
     crystal-cavern.persist.syncthing-dataDir.path = config.services.syncthing.configDir;
 
 	nixpkgs.overlays = [
-		(self: super: {inherit (unstable) 
-			#kdePackages
-			openscad-unstable
+		(self: super: {inherit (unstable)
+          # Place packages here, which should be pulled from unstalbe instead of current stable branch
 		;})
-		(self: _super: {
-		        vivaldi =
-		          let
-		            pkgsPatched =
-		              (import (
-		                self.applyPatches {
-		                  src = self.path;
-		                  patches = [
-		                    (self.fetchpatch {
-		                      url = "https://github.com/NixOS/nixpkgs/pull/292148.patch";
-		                      hash = "sha256-gaH4UxKi2s7auoaTmbBwo0t4HuT7MwBuNvC/z2vvugE=";
-		                    })
-		                  ];
-		                }
-		              ))
-		                { inherit (config.nixpkgs) config system; };
-		          in
-		          pkgsPatched.vivaldi.override { qt = self.qt6; };
-		      })
+# 		(self: _super: {
+# 		        vivaldi =
+# 		          let
+# 		            pkgsPatched =
+# 		              (import (
+# 		                self.applyPatches {
+# 		                  src = self.path;
+# 		                  patches = [
+# 		                    (self.fetchpatch {
+# 		                      url = "https://github.com/NixOS/nixpkgs/pull/292148.patch";
+# 		                      hash = "sha256-gaH4UxKi2s7auoaTmbBwo0t4HuT7MwBuNvC/z2vvugE=";
+# 		                    })
+# 		                  ];
+# 		                }
+# 		              ))
+# 		                { inherit (config.nixpkgs) config system; };
+# 		          in
+# 		          pkgsPatched.vivaldi.override { qt = self.qt6; };
+# 		      })
 	];
 
     services = {
@@ -78,19 +77,20 @@ in
         dataDir = "/home/${config.networking.hostName}";
 
         systemService = true;
-        # Required to establish connection to azurite
-        relay.enable = true;
-        # settings = {
-        #   options = {
+        # Required to establish connection to azurite // nvm, this is the relay itself
+        # relay.enable = true;
+        settings = {
+          options = {
+            relaysEnabled = true;
         #    urAccepted = -1;
-        #  };
+          };
           #           folders = {
           # #             "/home/${config.networking.hostName}/.config/joplin-desktop/plugins" = {
           # #               id = "joplin-plugins";
           # #               devices = [ "kyanite" "amethyst" "azurite" ];
           # #             };
           #           };
-        #};
+        };
         overrideFolders = false;
         overrideDevices = false;
       };
@@ -115,6 +115,12 @@ in
     environment.systemPackages = with pkgs; [
       wayland
       xdg-utils
+      (vivaldi.overrideAttrs
+      (oldAttrs: {
+        dontWrapQtApps = false;
+        dontPatchELF = true;
+        nativeBuildInputs = oldAttrs.nativeBuildInputs ++ [pkgs.kdePackages.wrapQtAppsHook];
+      }))
       vivaldi
       vivaldi-ffmpeg-codecs
       vlc
@@ -136,12 +142,12 @@ in
       openscad-unstable
       element-desktop
       vesktop
+      jellyfin-media-player
     ];
 
     environment.plasma6.excludePackages = with pkgs.kdePackages; [
       plasma-browser-integration
       oxygen
-      #spectacle
       kwrited
     ];
 

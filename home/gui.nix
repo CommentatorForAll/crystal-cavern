@@ -14,7 +14,9 @@ in
   config = lib.mkIf enabled {
     home.packages = with pkgs; [ fira-code-nerdfont ];
     nixpkgs.overlays = [
-    	(self: super: {inherit (unstable) kdePackages;})
+    	(self: super: {inherit (unstable)
+          # Place packages here, which should be pulled from unstalbe instead of current stable branch
+		;})
     ];
     programs =
       {
