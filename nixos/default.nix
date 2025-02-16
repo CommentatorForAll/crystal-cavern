@@ -7,5 +7,6 @@ _: {
     ./server.nix
     ./persist.nix
     ./gayming.nix
+    ./coding.nix
   ];
 }

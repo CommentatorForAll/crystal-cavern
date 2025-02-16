@@ -88,6 +88,7 @@ in
   		crystal-cavern.roles = {
   			desktop = true;
   			gayming = true;
+  			coding = true;
   		};
   		home-manager.users = {
   			perovskite = {
@@ -135,7 +136,11 @@ in
     name = "kyanite";
     extraModules = [
       {
-        crystal-cavern.roles.desktop = true;
+        crystal-cavern.roles = {
+          desktop = true;
+          coding = true;
+          gayming =true;
+        };
         home-manager.users = {
           kyanite = {
             home.stateVersion = "23.11";
