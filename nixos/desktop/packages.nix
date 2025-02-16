@@ -2,11 +2,13 @@
   config,
   lib,
   pkgs,
+  spicetify-nix,
   ...
 }:
 let
   enabled = config.crystal-cavern.roles.desktop;
   unstable = import (import ../../npins).nixpkgs-unstable {inherit (pkgs) system;};
+  spicePkgs = spicetify-nix.legacyPackages.${pkgs.stdenv.system};
 in
 {
   config = lib.mkIf enabled {
@@ -67,6 +69,7 @@ in
       element-desktop
       vesktop
       jellyfin-media-player
+      config.programs.spicetify.spicedSpotify
     ];
     services = {
         printing = {
@@ -82,6 +85,22 @@ in
                     };
                 };
             };
+        };
+    };
+    programs = {
+        spicetify = {
+            enable = true;
+            enabledExtensions = with spicePkgs.extensions; [
+                shuffle
+                songStats
+                history
+            ];
+            enabledCustomApps = with spicePkgs.apps; [
+                marketplace
+                nameThatTune
+            ];
+            theme = spicePkgs.themes.catppuccin;
+            colorScheme = "mocha";
         };
     };
   };

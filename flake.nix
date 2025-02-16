@@ -40,6 +40,9 @@
         darwin.follows = "";
       };
     };
+    spicetify-nix = {
+      url = "github:Gerg-L/spicetify-nix";
+    };
   };
 
   outputs =
@@ -47,6 +50,7 @@
       agenix,
       flake-parts,
       treefmt-nix,
+      spicetify-nix,
       self,
       ...
     }:
@@ -61,7 +65,7 @@
         # Configurations for Linux (NixOS) machines
         nixosConfigurations = import ./entry.nix inputs;
         homeManagerModules.default = import ./home;
-        nixosModules.default = import ./nixos;
+        nixosModules.default = import ./nixos inputs;
       };
       perSystem =
         {

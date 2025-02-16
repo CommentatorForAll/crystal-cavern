@@ -6,6 +6,7 @@
   home-manager,
   plasma-manager,
   authentik-nix,
+  spicetify-nix,
   self,
   ...
 }:
@@ -30,7 +31,11 @@ let
         ./hosts/${name}
         catppuccin.nixosModules.catppuccin
         home-manager.nixosModules.home-manager
+        spicetify-nix.nixosModules.spicetify
       ] ++ extraModules;
+      specialArgs = {
+        inherit spicetify-nix;
+      };
     };
 in
 {
