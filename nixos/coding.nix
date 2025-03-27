@@ -13,6 +13,8 @@ in
     environment.systemPackages = with pkgs; [
       jetbrains.clion
       jetbrains.pycharm-professional
+      jetbrains.rust-rover
+      rustup
       python313
     ];
   };
