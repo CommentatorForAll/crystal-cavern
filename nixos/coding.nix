@@ -14,6 +14,7 @@ in
       jetbrains.clion
       jetbrains.pycharm-professional
       jetbrains.rust-rover
+      jetbrains.idea-ultimate
       rustup
       python313
     ];

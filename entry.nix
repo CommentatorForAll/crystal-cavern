@@ -119,6 +119,40 @@ in
   		}
   	];
   };
+  celestine = mkHost {
+  	system = "x86_64-linux";
+  	name = "celestine";
+  	extraModules = [
+  		{
+  			crystal-cavern.roles = {
+  				desktop = true;
+  				gayming = false;
+  				coding = true;
+  			};
+  			home-manager.users = {
+  				celestine = {
+  					home.stateVersion = "24.11";
+  					crystal-cavern.gui = true;
+  					imports = [
+  						plasma-manager.homeManagerModules.plasma-manager
+  						catppuccin.homeManagerModules.catppuccin
+  						self.homeManagerModules.default
+  						./home
+  					];
+  				};
+  				root = {
+  					home.stateVersion = "24.11";
+  					imports = [
+  						plasma-manager.homeManagerModules.plasma-manager
+  						catppuccin.homeManagerModules.catppuccin
+  						self.homeManagerModules.default
+  						./home
+  					];
+  				};
+  			};
+  		}
+  	];
+  };
   quartz = mkHost {
     system = "aarch64-linux";
     name = "quartz";
