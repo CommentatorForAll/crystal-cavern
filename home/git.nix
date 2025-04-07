@@ -2,7 +2,7 @@ _: {
   programs.git = {
     enable = true;
     userName = "Commentator2.0";
-    userEmail = "commentator2.0@protonmail.com";
+    userEmail = "commentator2.0@crystal-cavern.systems";
 
     delta.enable = true;
 
@@ -12,7 +12,7 @@ _: {
         autocrlf = "input";
         editor = "micro";
       };
-      github.user = "kommentatorforall";
+      github.user = "commentatorforall";
       init.defaultBranch = "main";
       pull.rebase = true;
       merge.conflictstyle = "zdiff3";
