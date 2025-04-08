@@ -2,7 +2,7 @@ _:
 let
   path = "/persist/data/joplin";
   port = 50143;
-  url = "notes.blackdemon.tech";
+  url = "notes.crystal-cavern.systems";
 in
 {
   crystal-cavern.compose.joplin.services = {
@@ -34,5 +34,8 @@ in
     };
   };
 
-  crystal-cavern.caddy.routes."${url}".port = port;
+  crystal-cavern.caddy.routes = {
+    "${url}".port = port;
+    "notes.blackdemon.tech".redir = "${url}";
+  };
 }
