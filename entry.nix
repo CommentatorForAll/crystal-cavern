@@ -126,7 +126,7 @@ in
   		{
   			crystal-cavern.roles = {
   				desktop = true;
-  				gayming = false;
+  				gayming = true;
   				coding = true;
   			};
   			home-manager.users = {

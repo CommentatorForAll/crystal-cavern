@@ -8,8 +8,12 @@
   imports =
     [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
+    "${(import ../../npins).nixos-hardware}/framework/13-inch/7040-amd"
       ./users.nix
     ];
+
+  services.fwupd.enable = true;
+
 
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
@@ -42,7 +46,6 @@
     layout = "us";
     variant = "altgr-intl";
   };
-  services.fwupd.enable = true;
 
   # Enable automatic login for the user.
   services.getty.autologinUser = "celestine";

@@ -5,7 +5,20 @@
       "name": "nixpkgs-unstable",
       "url": "https://releases.nixos.org/nixpkgs/nixpkgs-25.05pre774024.25d1b84f5c90/nixexprs.tar.xz",
       "hash": "0wn9xnzdx2j6x4sddlrgks3r6nh3x4z27s7wfgjcmjy2i7snwkrx"
+    },
+    "nixos-hardware": {
+      "type": "Git",
+      "repository": {
+        "type": "GitHub",
+        "owner": "nixos",
+        "repo": "nixos-hardware"
+      },
+      "branch": "master",
+      "revision": "45348ad6fb8ac0e8415f6e5e96efe47dd7f39405",
+      "url": "https://github.com/nixos/nixos-hardware/archive/45348ad6fb8ac0e8415f6e5e96efe47dd7f39405.tar.gz",
+      "hash": "0r9glp35q3za30mqm15kbda49m1xmvlfxzhck6h811mcw06snplh"
     }
+
   },
   "version": 3
 }

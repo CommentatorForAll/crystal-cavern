@@ -18,7 +18,7 @@ in
               patches = [
                 (self.fetchpatch {
                   url = "https://github.com/NixOS/nixpkgs/pull/348137.patch";
-                  sha256 = "sha256-egaMJ6opRSGz8Y98geG2NGpeV+0HpuIaTihvurNBFbY=";
+                  sha256 = "sha256-5iFX3mEy6hXBebKQ7i18davhnKrPiX9QUV1K2x6xX/g=";
                 })
               ];
             }
