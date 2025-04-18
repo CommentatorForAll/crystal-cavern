@@ -18,8 +18,11 @@
     };
   };
 
-  boot.kernelModules = [ "kvm-amd" "nct6687d"];
-  boot.extraModulePackages = [ ];
+  boot.kernelModules = [ "kvm-amd" "nct6687"];
+  boot.extraModulePackages = with config.boot.kernelPackages; [
+    # It's an out-of-tree package
+    nct6687d
+  ];
 
   hardware.bluetooth.enable = true;
 
