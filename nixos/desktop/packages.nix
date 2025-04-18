@@ -19,6 +19,7 @@ in
 	nixpkgs.overlays = [
 		(self: super: {inherit (unstable)
           # Place packages here, which should be pulled from unstalbe instead of current stable branch
+          npins
 		;})
 # 		(self: _super: {
 # 		        vivaldi =
@@ -70,6 +71,7 @@ in
       vesktop
       jellyfin-media-player
       config.programs.spicetify.spicedSpotify
+      npins
     ];
     services = {
         printing = {
