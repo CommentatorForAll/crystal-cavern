@@ -17,6 +17,7 @@ in
       jetbrains.idea-ultimate
       rustup
       python313
+      quickemu
     ];
   };
 

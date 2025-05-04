@@ -9,6 +9,7 @@
         "audio"
         "docker"
         "celestine"
+        "libvirtd"
     ];
     shell =pkgs.zsh;
   };

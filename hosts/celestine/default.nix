@@ -73,6 +73,15 @@
     openFirewall = true;
   };
 
+  # Virtualization
+  programs.virt-manager.enable = true;
+
+  users.groups.libvirtd.members = [config.networking.hostName];
+
+  virtualisation.libvirtd.enable = true;
+
+  virtualisation.spiceUSBRedirection.enable = true;
+
   # Open ports in the firewall.
   # networking.firewall.allowedTCPPorts = [ ... ];
   # networking.firewall.allowedUDPPorts = [ ... ];

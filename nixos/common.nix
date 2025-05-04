@@ -13,6 +13,7 @@
 
   environment.systemPackages = with pkgs; [
     git
+    lazygit
     tree
     htop
     iftop
