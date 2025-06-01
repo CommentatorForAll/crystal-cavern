@@ -51,7 +51,7 @@ in
       vivaldi
       vivaldi-ffmpeg-codecs
       vlc
-      filelight
+      kdePackages.filelight
       libreoffice
       kdePackages.kdeconnect-kde
       kdePackages.plasma-pa

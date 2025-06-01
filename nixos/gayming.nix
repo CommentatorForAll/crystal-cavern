@@ -17,15 +17,15 @@ in
               src = self.path;
               patches = [
                 (self.fetchpatch {
-                  url = "https://github.com/NixOS/nixpkgs/pull/348137.patch";
-                  sha256 = "sha256-5iFX3mEy6hXBebKQ7i18davhnKrPiX9QUV1K2x6xX/g=";
+                  url = "https://github.com/NixOS/nixpkgs/pull/309327.patch";
+                  sha256 = "sha256-Yugogh6w5hZAiljWRU8DUArYrfoSH+3v5uRaMMUwdgc=";
                 })
               ];
             }
           ))
           {inherit (config.nixpkgs) config system;};
         in
-          pkgsPatched.satisfactorymodmanager;
+          pkgsPatched.olympus;
         })
     ];
 

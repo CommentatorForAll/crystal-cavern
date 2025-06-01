@@ -14,6 +14,10 @@ in
     }
     // lib.mkIf cfg.enable {
       programs = {
+#         catpuccin = {
+#           fzf.enable = true;
+#           bat.enable = true;
+#         };
         nix-index = {
           enable = true;
           enableZshIntegration = true;
@@ -21,11 +25,9 @@ in
         fzf = {
           enable = true;
           enableZshIntegration = true;
-          catppuccin.enable = true;
         };
         bat = {
           enable = true;
-          catppuccin.enable = true;
         };
         eza = {
           enable = true;
