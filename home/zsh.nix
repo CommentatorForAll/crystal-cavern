@@ -11,6 +11,10 @@ in
   config =
     {
       shells = [ pkgs.zsh ];
+      environment.variables = {
+        REPORTTIME=3;
+        NIX_BUILD_SHELL="zsh";
+      };
     }
     // lib.mkIf cfg.enable {
       programs = {
@@ -118,8 +122,6 @@ in
             export PATH=$PATH:$HOME/.local/bin
           '';
           localVariables = {
-            REPORTTIME=3;
-            NIX_BUILD_SHELL="zsh";
           };
         };
       };
