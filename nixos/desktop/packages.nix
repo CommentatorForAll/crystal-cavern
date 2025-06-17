@@ -100,9 +100,12 @@ in
             enabledCustomApps = with spicePkgs.apps; [
                 marketplace
                 nameThatTune
+                newReleases
+                localFiles
             ];
-            theme = spicePkgs.themes.catppuccin;
-            colorScheme = "mocha";
+            # theme = spicePkgs.themes.catppuccin;
+            # colorScheme = "mocha";
+            alwaysEnableDevTools = true;
         };
     };
   };

@@ -14,7 +14,7 @@ let
   serverUser = {
     home.stateVersion = "23.11";
     imports = [
-      catppuccin.homeManagerModules.catppuccin
+      catppuccin.homeModules.catppuccin
       self.homeManagerModules.default
     ];
   };
@@ -67,7 +67,7 @@ in
             crystal-cavern.gui = true;
             imports = [
               plasma-manager.homeManagerModules.plasma-manager
-              catppuccin.homeManagerModules.catppuccin
+              catppuccin.homeModules.catppuccin
               self.homeManagerModules.default
               ./home
             ];
@@ -76,7 +76,7 @@ in
             home.stateVersion = "24.05";
             imports = [
               plasma-manager.homeManagerModules.plasma-manager
-              catppuccin.homeManagerModules.catppuccin
+              catppuccin.homeModules.catppuccin
               self.homeManagerModules.default
               ./home
             ];
@@ -101,7 +101,7 @@ in
   				crystal-cavern.gui = true;
   				imports = [
   					plasma-manager.homeManagerModules.plasma-manager
-  					catppuccin.homeManagerModules.catppuccin
+  					catppuccin.homeModules.catppuccin
   					self.homeManagerModules.default
   					./home
   				];
@@ -110,7 +110,7 @@ in
   				home.stateVersion = "24.05";
   				imports = [
   					plasma-manager.homeManagerModules.plasma-manager
-  					catppuccin.homeManagerModules.catppuccin
+  					catppuccin.homeModules.catppuccin
   					self.homeManagerModules.default
   					./home
   				];
@@ -135,7 +135,7 @@ in
   					crystal-cavern.gui = true;
   					imports = [
   						plasma-manager.homeManagerModules.plasma-manager
-  						catppuccin.homeManagerModules.catppuccin
+                        catppuccin.homeModules.catppuccin
   						self.homeManagerModules.default
   						./home
   					];
@@ -144,7 +144,7 @@ in
   					home.stateVersion = "24.11";
   					imports = [
   						plasma-manager.homeManagerModules.plasma-manager
-  						catppuccin.homeManagerModules.catppuccin
+                        catppuccin.homeModules.catppuccin
   						self.homeManagerModules.default
   						./home
   					];
@@ -186,7 +186,7 @@ in
             crystal-cavern.gui = true;
             imports = [
               plasma-manager.homeManagerModules.plasma-manager
-              catppuccin.homeManagerModules.catppuccin
+              catppuccin.homeModules.catppuccin
               self.homeManagerModules.default
             ];
           };
@@ -194,7 +194,7 @@ in
             home.stateVersion = "23.11";
             imports = [
               plasma-manager.homeManagerModules.plasma-manager
-              catppuccin.homeManagerModules.catppuccin
+              catppuccin.homeModules.catppuccin
               self.homeManagerModules.default
             ];
           };

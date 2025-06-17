@@ -10,7 +10,6 @@ in
 {
 
     config = lib.mkIf enabled {
-        crystal-cavern.persist.syncthing-dataDir.path = config.services.syncthing.configDir;
         services = {
             syncthing = {
                 enable = true;
@@ -36,6 +35,11 @@ in
                 overrideFolders = false;
                 overrideDevices = false;
             };
+        };
+        crystal-cavern.persist.syncthing-dataDir = {
+            path = config.services.syncthing.configDir;
+            owner = config.services.syncthing.user;
+            group = config.services.syncthing.group;
         };
 
         systemd.services.syncthing.serviceConfig.ReadWriteDirectories = [
