@@ -16,7 +16,7 @@ in
 
       displayManager = {
         autoLogin = {
-          enable = true;
+          enable = false;
           user = config.networking.hostName;
         };
         sddm = {

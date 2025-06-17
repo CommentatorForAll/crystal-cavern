@@ -12,7 +12,7 @@ let
 in
 {
   config = lib.mkIf enabled {
-    home.packages = with pkgs; [ fira-code-nerdfont ];
+    home.packages = with pkgs; [ nerd-fonts.fira-code ];
     nixpkgs.overlays = [
     	(self: super: {inherit (unstable)
           # Place packages here, which should be pulled from unstalbe instead of current stable branch

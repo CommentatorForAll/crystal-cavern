@@ -14,10 +14,6 @@ in
     }
     // lib.mkIf cfg.enable {
       programs = {
-#         catpuccin = {
-#           fzf.enable = true;
-#           bat.enable = true;
-#         };
         nix-index = {
           enable = true;
           enableZshIntegration = true;
@@ -89,19 +85,26 @@ in
               src = "${pkgs.zsh-fast-syntax-highlighting}/share/zsh/site-functions";
             }
             {
-              name = "zsh-nix-shell";
-              src = "${pkgs.zsh-nix-shell}/share/zsh-nix-shell";
-            }
-            {
               name = "zsh-fzf-tab";
               src = "${pkgs.zsh-fzf-tab}/share/fzf-tab";
               file = "fzf-tab.plugin.zsh";
+            }
+            {
+              name = "zsh-nix-shell";
+              file = "nix-shell.plugin.zsh";
+              src = pkgs.fetchFromGitHub {
+                owner = "chisui";
+                repo = "zsh-nix-shell";
+                rev = "v0.8.0";
+                sha256 = "1lzrn0n4fxfcgg65v0qhnj7wnybybqzs4adz7xsrkgmcsr0ii8b7";
+              };
             }
           ];
 
           shellAliases = {
             cd = "z";
             gc = "nix-collect-garbage --delete-old";
+            lg = "lazygit";
             refresh = "source ${config.home.homeDirectory}/.zshrc";
             show_path = ''
               echo $PATH | tr ':' ' '
@@ -116,6 +119,7 @@ in
           '';
           localVariables = {
             REPORTTIME=3;
+            NIX_BUILD_SHELL="zsh";
           };
         };
       };
