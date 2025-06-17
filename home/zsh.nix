@@ -117,6 +117,7 @@ in
             retoot = "reboot";
             element-desktop = "element-desktop --enable-features=UseOzonePlatform --ozone-platform=wayland";
             webcord = "webcord --enable-features=UseOzonePlatform --ozone-platform=wayland";
+            slg = "SKIP=treefmt lazygit";
           };
           envExtra = ''
             export PATH=$PATH:$HOME/.local/bin

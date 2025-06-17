@@ -11,7 +11,7 @@ in
   config = lib.mkIf enabled {
     nixpkgs.overlays = [
       (self: super: {
-        satisfactorymodmanager =
+        olympus =
           let pkgsPatched = (import (
             self.applyPatches {
               src = self.path;
@@ -37,6 +37,7 @@ in
       prismlauncher
       mangohud
       satisfactorymodmanager
+      olympus
     ];
     programs = {
       steam = {
