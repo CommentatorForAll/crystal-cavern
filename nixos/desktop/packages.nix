@@ -103,7 +103,7 @@ in
                 newReleases
                 localFiles
             ];
-            # theme = spicePkgs.themes.catppuccin;
+            theme = spicePkgs.themes.text;
             # colorScheme = "mocha";
             alwaysEnableDevTools = true;
         };

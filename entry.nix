@@ -99,6 +99,11 @@ in
   			perovskite = {
   				home.stateVersion = "24.05";
   				crystal-cavern.gui = true;
+                crystal-cavern.autostart = {
+                  vesktop = true;
+                  element = true;
+                  browser = "vivaldi";
+                };
   				imports = [
   					plasma-manager.homeManagerModules.plasma-manager
   					catppuccin.homeModules.catppuccin
