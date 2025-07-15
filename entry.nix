@@ -102,7 +102,7 @@ in
                 crystal-cavern.autostart = {
                   vesktop = true;
                   element = true;
-                  browser = "vivaldi";
+                  browser = "floorp";
                 };
   				imports = [
   					plasma-manager.homeManagerModules.plasma-manager

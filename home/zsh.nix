@@ -12,7 +12,6 @@ in
     {
       shells = [ pkgs.zsh ];
       environment.variables = {
-        REPORTTIME=3;
         NIX_BUILD_SHELL="zsh";
       };
     }

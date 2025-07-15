@@ -42,14 +42,6 @@ in
 # 		      })
 	];
     environment.systemPackages = with pkgs; [
-      (vivaldi.overrideAttrs
-      (oldAttrs: {
-        dontWrapQtApps = false;
-        dontPatchELF = true;
-        nativeBuildInputs = oldAttrs.nativeBuildInputs ++ [pkgs.kdePackages.wrapQtAppsHook];
-      }))
-      vivaldi
-      vivaldi-ffmpeg-codecs
       vlc
       kdePackages.filelight
       libreoffice
@@ -72,7 +64,17 @@ in
       jellyfin-media-player
       config.programs.spicetify.spicedSpotify
       npins
+      lact
     ];
+    systemd.services.lact = {
+      description = "AMDGPU Control Daemon";
+      after = ["multi-user.target"];
+      wantedBy = ["multi-user.target"];
+      serviceConfig = {
+        ExecStart = "${pkgs.lact}/bin/lact daemon";
+      };
+      enable = true;
+    };
     services = {
         printing = {
             enable = true;

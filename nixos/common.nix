@@ -35,6 +35,11 @@
     ];
   };
 
+  environment.variables = {
+    EDITOR = "micro";
+    REPORTTIME=3;
+  };
+
   environment.systemPackages = with pkgs; [
     nerd-fonts.fira-code
     git
