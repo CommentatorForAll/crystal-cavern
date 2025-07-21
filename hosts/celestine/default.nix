@@ -13,7 +13,8 @@
     ];
 
   services.fwupd.enable = true;
-
+  # is flakey for some reason
+  # hardware.framework.laptop13.audioEnhancement.enable = true;
 
   # Bootloader.
   boot.loader.systemd-boot.enable = true;

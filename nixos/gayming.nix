@@ -38,6 +38,7 @@ in
       mangohud
       satisfactorymodmanager
       olympus
+      kdePackages.kpat
     ];
     programs = {
       steam = {

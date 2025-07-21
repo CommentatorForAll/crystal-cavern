@@ -12,6 +12,7 @@ in
     ./kde.nix
     ./packages.nix
     ./syncthing.nix
+    ./snapper.nix
   ];
   options.crystal-cavern.roles.desktop = lib.mkEnableOption "This is a Desktop";
 }
