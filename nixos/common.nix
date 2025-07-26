@@ -1,6 +1,8 @@
 { pkgs, ... }:
 
 {
+  nix.package = pkgs.lixPackageSets.latest.lix;
+
   services.openssh = {
     enable = true;
     settings = {

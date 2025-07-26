@@ -46,7 +46,7 @@ in
                     icon = "tree";
                 };
             };
-            containersForce = true;
+            containersForce = false;
             # manage extenstions here, requries NUR though, so not enabled for now.
 #             extensions = {
 #                 packages = with pkgs.nur.repos.rycee.firefox-addons; [

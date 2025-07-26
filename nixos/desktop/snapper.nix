@@ -1,4 +1,6 @@
 {
+# apparently i am using ext4 and not btrfs, so this won't work -_-
+/*
     services.snapper = {
         # do backups every quater hour
         snapshotInterval = "*:00/15:00";
@@ -44,5 +46,5 @@
                 TIMELINE_LIMIT_WEEKLY = 1;
             };
         };
-    };
+    };*/
 }
