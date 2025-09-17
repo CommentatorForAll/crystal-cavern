@@ -36,7 +36,6 @@ in
       wineWowPackages.waylandFull
       prismlauncher
       mangohud
-      satisfactorymodmanager
       olympus
       kdePackages.kpat
     ];

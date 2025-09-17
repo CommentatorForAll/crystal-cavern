@@ -23,6 +23,7 @@
 
   environment.systemPackages = with pkgs; [
     egl-wayland
+    satisfactorymodmanager
   ];
 
   time.timeZone = "Europe/Berlin";
