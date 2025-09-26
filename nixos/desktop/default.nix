@@ -13,6 +13,7 @@ in
     ./packages.nix
     ./syncthing.nix
     ./snapper.nix
+    ./tailscale.nix
   ];
   options.crystal-cavern.roles.desktop = lib.mkEnableOption "This is a Desktop";
 }
