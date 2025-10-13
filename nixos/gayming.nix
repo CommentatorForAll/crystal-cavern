@@ -6,6 +6,7 @@
 }:
 let
   enabled = config.crystal-cavern.roles.gayming;
+  unstable = import (import ../npins).nixpkgs-unstable {inherit (pkgs) system;};
 in
 {
   config = lib.mkIf enabled {
@@ -38,6 +39,7 @@ in
       mangohud
       olympus
       kdePackages.kpat
+      unstable.satisfactorymodmanager
     ];
     programs = {
       steam = {
