@@ -1,6 +1,5 @@
 {
   nixpkgs,
-  catppuccin,
   disko,
   agenix,
   home-manager,
@@ -14,7 +13,6 @@ let
   serverUser = {
     home.stateVersion = "23.11";
     imports = [
-      catppuccin.homeModules.catppuccin
       self.homeManagerModules.default
     ];
   };
@@ -29,7 +27,6 @@ let
       modules = [
         self.nixosModules.default
         ./hosts/${name}
-        catppuccin.nixosModules.catppuccin
         home-manager.nixosModules.home-manager
         spicetify-nix.nixosModules.spicetify
       ] ++ extraModules;
@@ -66,8 +63,7 @@ in
             home.stateVersion = "24.05";
             crystal-cavern.gui = true;
             imports = [
-              plasma-manager.homeManagerModules.plasma-manager
-              catppuccin.homeModules.catppuccin
+              plasma-manager.homeModules.plasma-manager
               self.homeManagerModules.default
               ./home
             ];
@@ -75,8 +71,7 @@ in
           root = {
             home.stateVersion = "24.05";
             imports = [
-              plasma-manager.homeManagerModules.plasma-manager
-              catppuccin.homeModules.catppuccin
+              plasma-manager.homeModules.plasma-manager
               self.homeManagerModules.default
               ./home
             ];
@@ -105,8 +100,7 @@ in
                   browser = "floorp";
                 };
   				imports = [
-  					plasma-manager.homeManagerModules.plasma-manager
-  					catppuccin.homeModules.catppuccin
+  					plasma-manager.homeModules.plasma-manager
   					self.homeManagerModules.default
   					./home
   				];
@@ -114,8 +108,7 @@ in
   			root = {
   				home.stateVersion = "24.05";
   				imports = [
-  					plasma-manager.homeManagerModules.plasma-manager
-  					catppuccin.homeModules.catppuccin
+  					plasma-manager.homeModules.plasma-manager
   					self.homeManagerModules.default
   					./home
   				];
@@ -139,8 +132,7 @@ in
   					home.stateVersion = "24.11";
   					crystal-cavern.gui = true;
   					imports = [
-  						plasma-manager.homeManagerModules.plasma-manager
-                        catppuccin.homeModules.catppuccin
+  						plasma-manager.homeModules.plasma-manager
   						self.homeManagerModules.default
   						./home
   					];
@@ -148,8 +140,7 @@ in
   				root = {
   					home.stateVersion = "24.11";
   					imports = [
-  						plasma-manager.homeManagerModules.plasma-manager
-                        catppuccin.homeModules.catppuccin
+  						plasma-manager.homeModules.plasma-manager
   						self.homeManagerModules.default
   						./home
   					];
@@ -190,16 +181,14 @@ in
             home.stateVersion = "23.11";
             crystal-cavern.gui = true;
             imports = [
-              plasma-manager.homeManagerModules.plasma-manager
-              catppuccin.homeModules.catppuccin
+              plasma-manager.homeModules.plasma-manager
               self.homeManagerModules.default
             ];
           };
           root = {
             home.stateVersion = "23.11";
             imports = [
-              plasma-manager.homeManagerModules.plasma-manager
-              catppuccin.homeModules.catppuccin
+              plasma-manager.homeModules.plasma-manager
               self.homeManagerModules.default
             ];
           };
