@@ -23,8 +23,11 @@
 
   environment.systemPackages = with pkgs; [
     egl-wayland
-    satisfactorymodmanager
+    lact
   ];
+
+  systemd.packages = with pkgs; [ lact ];
+  systemd.services.lactd.wantedBy = ["multi-user.target"];
 
   time.timeZone = "Europe/Berlin";
 
