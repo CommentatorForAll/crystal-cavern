@@ -11,6 +11,10 @@
       KbdInteractiveAuthentication = false;
     };
   };
+
+  # services.home-manager.autoExpire.enable = true;
+  boot.loader.systemd-boot.configurationLimit = 5;
+
   programs.zsh.enable = true;
 
   time.timeZone = "Europe/Berlin";
