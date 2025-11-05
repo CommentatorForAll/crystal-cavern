@@ -64,6 +64,7 @@
     unzip
     lm_sensors
     fd
+    nix-output-monitor
   ];
 
   nix.settings.experimental-features = [
