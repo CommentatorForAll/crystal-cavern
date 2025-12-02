@@ -17,6 +17,7 @@
 
   networking.hostName = "perovskite"; # Define your hostname.
   networking.networkmanager.enable = true;  # Easiest to use and most distros use this by default.
+  networking.interfaces.enp14s0.wakeOnLan.enable = true; # enable WOL on ethernet
 
   # Enable CUPS to print documents.
   services.printing.enable = true;

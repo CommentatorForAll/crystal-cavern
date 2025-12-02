@@ -105,6 +105,14 @@ in
   					./home
   				];
   			};
+  			catio3 = {
+  				home.stateVersion = "25.05";
+  				crystal-cavern.gui = false;
+  				imports = [
+  					self.homeManagerModules.default
+  					./home
+  				];
+  			};
   			root = {
   				home.stateVersion = "24.05";
   				imports = [
