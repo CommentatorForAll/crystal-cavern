@@ -10,25 +10,25 @@ let
 in
 {
   config = lib.mkIf enabled {
-    nixpkgs.overlays = [
-      (self: super: {
-        olympus =
-          let pkgsPatched = (import (
-            self.applyPatches {
-              src = self.path;
-              patches = [
-                (self.fetchpatch {
-                  url = "https://github.com/NixOS/nixpkgs/pull/309327.patch";
-                  sha256 = "sha256-Yugogh6w5hZAiljWRU8DUArYrfoSH+3v5uRaMMUwdgc=";
-                })
-              ];
-            }
-          ))
-          {inherit (config.nixpkgs) config system;};
-        in
-          pkgsPatched.olympus;
-        })
-    ];
+#     nixpkgs.overlays = [
+#       (self: super: {
+#         olympus =
+#           let pkgsPatched = (import (
+#             self.applyPatches {
+#               src = self.path;
+#               patches = [
+#                 (self.fetchpatch {
+#                   url = "https://github.com/NixOS/nixpkgs/pull/309327.patch";
+#                   sha256 = "sha256-Yugogh6w5hZAiljWRU8DUArYrfoSH+3v5uRaMMUwdgc=";
+#                 })
+#               ];
+#             }
+#           ))
+#           {inherit (config.nixpkgs) config system;};
+#         in
+#           pkgsPatched.olympus;
+#         })
+#     ];
 
 
     nixpkgs.config.allowUnfree = true;

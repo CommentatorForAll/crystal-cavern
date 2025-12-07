@@ -1,12 +1,16 @@
 _: {
+  programs.delta = {
+    enable = true;
+    enableGitIntegration = true;
+  };
   programs.git = {
     enable = true;
-    userName = "Commentator2.0";
-    userEmail = "commentator2.0@crystal-cavern.systems";
+    settings = {
+      user = {
+        name = "Commentator2.0";
+        email = "commentator2.0@crystal-cavern.systems";
+      };
 
-    delta.enable = true;
-
-    extraConfig = {
       # https://jvns.ca/blog/2024/02/16/popular-git-config-options/
       core = {
         autocrlf = "input";
@@ -22,10 +26,10 @@ _: {
       url = {
         "git@github.com:".insteadOf = "gh:";
       };
+      alias = {
+        plog = "log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(dim white)- %an%C(reset)%C(bold yellow)%d%C(reset)' --all";
+      };
     };
 
-    aliases = {
-      plog = "log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(dim white)- %an%C(reset)%C(bold yellow)%d%C(reset)' --all";
-    };
   };
 }

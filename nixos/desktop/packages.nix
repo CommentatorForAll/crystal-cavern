@@ -61,7 +61,8 @@ in
       openscad-unstable
       element-desktop
       vesktop
-      jellyfin-media-player
+      #jellyfin-media-player
+      jellyflix
       config.programs.spicetify.spicedSpotify
       npins
       lact
