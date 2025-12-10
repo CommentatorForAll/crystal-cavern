@@ -17,13 +17,13 @@ in
         htpasswd_encryption = "bcrypt";
       };
       storage = {
-        filesystem_folder = data_path;
+        filesystem_folder = "/persist/data/radicale";
       };
     };
   };
 
   crystal-cavern = {
     caddy.routes."calendar.blackdemon.tech".port = port;
-    persist.radicale.path = data_path;
+    #persist.radicale.path = data_path;
   };
 }

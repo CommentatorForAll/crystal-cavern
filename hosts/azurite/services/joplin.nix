@@ -7,7 +7,7 @@ in
 {
   crystal-cavern.compose.joplin.services = {
     joplin = {
-      image = "etechonomy/joplin-server:latest";
+      image = "joplin/server:arm64-latest";
       depends_on = [ "db" ];
       environment = [
         "APP_PORT=22300"
