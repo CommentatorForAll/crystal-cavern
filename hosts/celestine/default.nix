@@ -12,6 +12,19 @@
       ./users.nix
     ];
 
+  nix.buildMachines = [
+    {
+      hostName = "perovskite";
+      sshUser = "catio3";
+      protocol = "ssh-ng";
+      sshKey = "/root/.ssh/key";
+      system = "x86_64-linux";
+      maxJobs = 6;
+      speedFactor = 4;
+    }
+  ];
+  nix.distributedBuilds = true;
+
   services.fwupd.enable = true;
   # is flakey for some reason
   # hardware.framework.laptop13.audioEnhancement.enable = true;
@@ -67,6 +80,8 @@
   # };
 
   # List services that you want to enable:
+
+  services.spotifyd.enable = true;
 
   # Enable the OpenSSH daemon.
   services.openssh = {
