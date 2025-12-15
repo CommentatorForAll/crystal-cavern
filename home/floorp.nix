@@ -5,11 +5,11 @@
   ...
 }:
 let
-    enabled = false;
+    enabled = config.crystal-cavern.gui;
 in
 {
     programs.floorp = {
-        enable = true;
+        enable = false; # enabled;
 #         languagePacks = [
 #             "en-US"
 #             "de"

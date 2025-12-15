@@ -66,6 +66,7 @@ in
       config.programs.spicetify.spicedSpotify
       npins
       lact
+      vivaldi
     ];
     systemd.services.lact = {
       description = "AMDGPU Control Daemon";
