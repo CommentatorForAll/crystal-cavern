@@ -21,6 +21,7 @@ in
       quickemu
       helix
       rust-analyzer
+      gcc
     ];
   };
 
