@@ -11,13 +11,16 @@ in
   config = lib.mkIf enabled {
     nixpkgs.config.allowUnfree = true;
     environment.systemPackages = with pkgs; [
-      jetbrains.clion
-      jetbrains.pycharm-professional
-      jetbrains.rust-rover
-      jetbrains.idea-ultimate
-      rustup
+      # jetbrains.clion
+      # jetbrains.pycharm-professional
+      # jetbrains.rust-rover
+      # jetbrains.idea-ultimate
       python313
+      python313Packages.python-lsp-ruff
+      python313Packages.python-lsp-server
       quickemu
+      helix
+      rust-analyzer
     ];
   };
 
