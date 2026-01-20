@@ -9,15 +9,15 @@
       },
       "branch": "master",
       "submodules": false,
-      "revision": "40b1a28dce561bea34858287fbb23052c3ee63fe",
-      "url": "https://github.com/nixos/nixos-hardware/archive/40b1a28dce561bea34858287fbb23052c3ee63fe.tar.gz",
-      "hash": "197v6xxdq5j4w8kil6q21ij9x6ng8z6j72brkwwjim23798c2c4n"
+      "revision": "d447553bcbc6a178618d37e61648b19e744370df",
+      "url": "https://github.com/nixos/nixos-hardware/archive/d447553bcbc6a178618d37e61648b19e744370df.tar.gz",
+      "hash": "1cysjbcmn1yzs1ir02qmsjfmgxk7fjmfw40n40vsfq7b4znal0da"
     },
     "nixpkgs-unstable": {
       "type": "Channel",
       "name": "nixpkgs-unstable",
-      "url": "https://releases.nixos.org/nixpkgs/nixpkgs-26.05pre920722.76eec3925eb9/nixexprs.tar.xz",
-      "hash": "0gpfx9fm5if34jxh9xlbjiyvc4fvcp6fzp1xdafynkhw367vlni1"
+      "url": "https://releases.nixos.org/nixpkgs/nixpkgs-26.05pre930106.bde090228871/nixexprs.tar.xz",
+      "hash": "0pl29r3kfgliivncvmidc15q4vimfpkiz9bj5hap8w0yxg95cl1p"
     }
   },
   "version": 5
