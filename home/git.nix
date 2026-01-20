@@ -7,14 +7,14 @@ _: {
     enable = true;
     settings = {
       user = {
-        name = "Commentator2.0";
-        email = "commentator2.0@crystal-cavern.systems";
+        name = "rootile";
+        email = "git@rootile.de";
       };
 
       # https://jvns.ca/blog/2024/02/16/popular-git-config-options/
       core = {
         autocrlf = "input";
-        editor = "micro";
+        editor = "hx";
       };
       github.user = "commentatorforall";
       init.defaultBranch = "main";
